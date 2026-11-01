@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111114">
+<title>Solve A Riddle</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div class="ambient"></div>
+  <header>
+    <button class="brand" id="brandButton" aria-label="Solve A Riddle home">
+      <span class="brand-mark">🧩</span>
+      <span><span class="brand-name">SOLVE A RIDDLE</span><span class="brand-sub">THINK · DECODE · SOLVE</span></span>
+    </button>
+    <div class="header-right"><span class="points-pill" id="headerPoints">★ 0 pts</span><img id="headerAvatar" class="avatar-mini" alt="Profile" src=""></div>
+  </header>
+  <main>
+    <section class="page active" id="page-home">
+      <div class="hero"><div class="hero-content"><div class="eyebrow">Your mind is the key</div><h1>THINK DEEPER.<br><span>SOLVE SMARTER.</span></h1><p>Every riddle has an answer. Explore mysteries, challenge your thinking, and climb the global-style leaderboard.</p><div class="hero-actions"><button class="btn btn-primary" data-go="play">▶ Play riddles</button><button class="btn btn-secondary" data-go="daily">✦ Daily challenge</button></div></div></div>
+      <div class="section-head"><div><h2>Your progress</h2><p>Every solved riddle takes you further.</p></div></div>
+      <div class="grid" id="homeStats"></div>
+      <div class="section-head"><div><h2>Today's challenge</h2><p>A fresh mystery to solve each day.</p></div><span class="badge red">DAILY</span></div>
+      <div class="card daily-card" id="dailyPreview"></div>
+      <div class="section-head"><div><h2>Explore categories</h2><p>Choose the kind of challenge you enjoy.</p></div><button class="btn btn-quiet btn-small" data-go="play">View all</button></div>
+      <div class="category-grid" id="homeCategories"></div>
+    </section>
+
+    <section class="page" id="page-play">
+      <div class="eyebrow">Choose your challenge</div><h1 style="font-size:clamp(30px,5vw,42px)">Riddle library<span style="color:#ff5963">.</span></h1><p>Browse every published riddle or filter by category and difficulty.</p>
+      <div class="toolbar"><input class="field search" id="riddleSearch" placeholder="Search riddles..."><select class="select" id="difficultyFilter" style="max-width:155px"><option value="all">All levels</option><option>Easy</option><option>Medium</option><option>Hard</option><option>Expert</option><option>Impossible</option></select></div>
+      <div class="toolbar" id="categoryFilters"></div>
+      <div class="riddle-grid" id="riddleList"></div>
+    </section>
+
+    <section class="page" id="page-daily">
+      <div class="eyebrow">A new challenge every day</div><h1 style="font-size:clamp(30px,5vw,42px)">Daily mystery<span style="color:#ff5963">.</span></h1><p>Complete today's featured riddle to build your streak.</p><div id="dailyPageCard"></div>
+    </section>
+
+    <section class="page" id="page-solve"><div class="solve-wrap" id="solveContent"></div></section>
+
+    <section class="page" id="page-leaderboard">
+      <div class="eyebrow">The sharpest minds</div><h1 style="font-size:clamp(30px,5vw,42px)">Leaderboard<span style="color:#ff5963">.</span></h1><p>Top scores recorded in this prototype on this device.</p><div class="card" style="margin:18px 0"><div class="eyebrow">Your current score</div><h2 id="myRankScore" style="margin:6px 0">0 points</h2><span class="muted">Solve more riddles to climb the rankings.</span></div><div id="leaderboardList"></div>
+    </section>
+
+    <section class="page" id="page-profile">
+      <div class="eyebrow">Your riddle journey</div><h1 style="font-size:clamp(30px,5vw,42px)">My profile<span style="color:#ff5963">.</span></h1>
+      <div class="card" style="margin-top:17px"><div class="profile-top"><img id="profileAvatar" class="avatar-large" alt="Your avatar" src=""><div style="flex:1"><h2 id="profileName">Riddle Solver</h2><span class="badge red" id="profileRank">Level 1 · Beginner</span><div style="margin-top:12px"><label class="file-label">↑ Upload profile picture<input id="avatarUpload" type="file" accept="image/*"></label></div></div></div><div style="margin-top:23px"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:8px"><strong id="levelLabel">Level 1</strong><span class="muted" id="xpLabel">0 / 100 XP</span></div><div class="progress"><span id="xpProgress" style="width:0%"></span></div><p class="muted" id="xpNext" style="margin:8px 0 0">100 XP to next level</p></div></div>
+      <div class="grid" id="profileStats" style="margin-top:13px"></div>
+      <div class="section-head"><div><h2>Achievements</h2><p>Milestones from your riddle journey.</p></div></div><div class="grid" id="achievements"></div>
+      <div class="section-head"><div><h2>Solve history</h2><p>Your recently completed riddles.</p></div></div><div class="history-list" id="historyList"></div>
+      <div class="card" style="margin-top:15px"><div class="form-group"><label>Display name</label><input class="field" id="nameInput" maxlength="24" placeholder="Your username"></div><button class="btn btn-primary" id="saveProfile">Save profile</button></div>
+    </section>
+
+    <section class="page" id="page-admin">
+      <div class="eyebrow">Private creator workspace</div><h1 style="font-size:clamp(30px,5vw,42px)">Admin center<span style="color:#ff5963">.</span></h1><p>Manage your riddles and daily challenge.</p>
+      <div class="admin-layout" style="margin-top:20px"><aside class="admin-menu"><button class="active" data-admin-tab="create">＋ Create riddle</button><button data-admin-tab="manage">▤ Manage riddles</button><button data-admin-tab="daily">✦ Daily challenge</button><button data-admin-tab="settings">⚙ Admin settings</button><button id="adminLogout">↪ Lock admin</button></aside><div class="admin-content" id="adminContent"></div></div>
+    </section>
+  </main>
+  <nav class="bottom-nav"><div class="nav-inner"><button class="nav-btn active" data-go="home"><span class="nav-icon">⌂</span>Home</button><button class="nav-btn" data-go="play"><span class="nav-icon">▧</span>Play</button><button class="nav-btn" data-go="leaderboard"><span class="nav-icon">♛</span>Ranks</button><button class="nav-btn" data-go="profile"><span class="nav-icon">◉</span>Profile</button></div></nav>
+</div>
+<div class="modal-backdrop" id="modal"><div class="modal" id="modalContent"></div></div><div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
