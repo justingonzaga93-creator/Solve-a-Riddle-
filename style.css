@@ -139,3 +139,5 @@ p { color:var(--muted); line-height:1.6; }
   .full { grid-column:auto; }
 }
 @media (max-width:390px) { .brand-name { font-size:12px; } .points-pill { padding:8px 9px; font-size:10px; } .grid { grid-template-columns:1fr 1fr; } }
+
+.profile-actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px; }
